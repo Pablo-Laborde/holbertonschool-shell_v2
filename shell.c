@@ -2,7 +2,7 @@
 
 
 /*	Global Variables	*/
-char*	path = NULL;
+char *path = NULL;
 int		len = 0;
 
 
