@@ -32,8 +32,6 @@ int main(int ac, char **av, char **env)
 		if (mode)
 			write(STDIN_FILENO, path, len);
 		cmd = get_cmd(STDIN_FILENO);
-		for (int i = 0; cmd[i]; i++)
-			printf("%s\n", cmd[i]);
 		cmd_free(cmd);
 		cmd = NULL;
 	} while (mode);
