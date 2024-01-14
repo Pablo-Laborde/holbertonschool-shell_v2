@@ -15,7 +15,7 @@
 /*	Functions		*/
 
 	/*
-		reads from fd until the end or a new line whatever happens first
+	*	reads from fd until the end or a new line whatever happens first
 	*/
 	char *_getline(const int fd);
 
@@ -27,16 +27,16 @@
 
 
 	/*
-		joins two stings
-		return behaviour:
-			if at least one of them is NULL -> NULL
-			else returns a copy of str1 and str2 into one single string, (str1 first)
+	*	joins two stings
+	*	return behaviour:
+	*		if at least one of them is NULL -> NULL
+	*		else returns a copy of str1 and str2 into one single string, (str1 first)
 	*/
 	char *join_strings(char *str1, char *str2);
 
 
 	/*
-		returns a copy of the string given
+	*	returns a copy of the string given
 	*/
 	char *cpy_string(char *str, int amt);
 

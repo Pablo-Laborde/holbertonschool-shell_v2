@@ -9,7 +9,7 @@ void set_path(void)
 {
 	int i = 0, j = 0, k = 0, flag = 0, len_h = 0, len_p = 0, pos_h = 5,
 		pos_p = 4;
-	char*	h_aux = NULL, *p_aux = NULL, *new_path = NULL;
+	char *h_aux = NULL, *p_aux = NULL, *new_path = NULL;
 
 	while (environ[i])
 	{

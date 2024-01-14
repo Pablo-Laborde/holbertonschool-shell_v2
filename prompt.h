@@ -1,6 +1,7 @@
 #ifndef PROMPT_H
 #define PROMPT_H
 
+
 /*	Macros	*/
 
 
@@ -14,11 +15,8 @@
 
 
 /*	Variables		*/
-	extern char
-		**environ,
-		*path;
-	extern int
-		len;
+	extern char **environ, *path;
+	extern int len;
 
 
 /*	Functions		*/
