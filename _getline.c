@@ -77,10 +77,10 @@ char *join_strings(char *str1, char *str2) {
 			for (i = 0; i < len2; i++)
 				new_str[i + len1] = str2[i];
 			new_str[len1 + len2] = '\0';
-			free(str1);
-			free(str2);
 		}
 	}
+	free(str1);
+	free(str2);
 	return (new_str);
 }
 
