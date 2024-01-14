@@ -26,7 +26,7 @@
 
 
 	/**/
-	int strc(char* so, char* st, int chn);
+	int strc(char *so, char *st, int chn);
 
 
 	/**/

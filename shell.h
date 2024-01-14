@@ -23,8 +23,5 @@
 
 /*  Functions   */
 
-	/**/
-	int hsh(int ac, char** av);
-
 
 #endif
