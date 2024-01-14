@@ -13,10 +13,14 @@ int		len = 2;
 * @env: char**
 * Return: int
 */
-int main(int ac, char** av, char** env) {
+int main(int ac, char** av, char** env)
+{
 	int mode = 0;
 	char **cmd = NULL;
 
+	(void)ac;
+	(void)av;
+	(void)env;
 	/*
 		Mode value is set by isatty, which will determine if usage is
 		in interactive or non-interactive mode.

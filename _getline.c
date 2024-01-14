@@ -6,29 +6,23 @@
 * @fd: int
 * Return: char*
 */
-char *_getline(const int fd) {
-	static char
-		buff[READ_SIZE];
-	static int
-		pos;
-	static ssize_t
-		ar;
-	int
-		x = 0,
-		i = pos,
-		len = 0,
-		cl = 0;
-	char
-		*str = NULL,
-		*aux = NULL;
+char *_getline(const int fd)
+{
+	static char buff[READ_SIZE];
+	static int pos;
+	static ssize_t ar;
+	int x = 0, i = pos, len = 0, cl = 0;
+	char *str = NULL, *aux = NULL;
 
-	if (fd == -1) {
+	if (fd == -1)
+	{
 		pos = 0;
 		ar = 0;
 	}
 	for (; x < READ_SIZE; x++)
 		buff[x] = '\0';
-	while ((pos < ar) || ((ar = read(fd, buff, READ_SIZE)) && (ar > -1))) {
+	while ((pos < ar) || ((ar = read(fd, buff, READ_SIZE)) && (ar > -1)))
+	{
 		if (!(pos < ar))
 			pos = 0;
 		i = pos;
@@ -36,12 +30,14 @@ char *_getline(const int fd) {
 		len = pos - i + 1;
 		if (!(pos < ar))
 			len--;
-		else {
+		else
+		{
 			pos++;
 			cl = 1;
 		}
 		aux = cpy_string(&buff[i], len);
-		if (aux) {
+		if (aux)
+		{
 			str = (str) ? join_strings(str, aux) : aux;
 			aux = NULL;
 		}
@@ -59,9 +55,9 @@ char *_getline(const int fd) {
 * @ar: int
 * Return: int
 */
-int end_line(char *str, int pos, int ar) {
-	int
-		i = pos;
+int end_line(char *str, int pos, int ar)
+{
+	int i = pos;
 
 	while (str[i] && (str[i] != '\n') && (i < ar))
 		i++;
@@ -75,21 +71,20 @@ int end_line(char *str, int pos, int ar) {
 * @str2: char*
 * Return: char*
 */
-char *join_strings(char *str1, char *str2) {
-	int
-		i = 0,
-		len1 = 0,
-		len2 = 0;
-	char
-		*new_str = NULL;
+char *join_strings(char *str1, char *str2)
+{
+	int i = 0, len1 = 0, len2 = 0;
+	char *new_str = NULL;
 
-	if (str1 && str2) {
+	if (str1 && str2)
+	{
 		while (str1[len1])
 			len1++;
 		while (str2[len2])
 			len2++;
 		new_str = malloc(len1 + len2 + 1);
-		if (new_str) {
+		if (new_str)
+		{
 			for (; i < len1; i++)
 				new_str[i] = str1[i];
 			for (i = 0; i < len2; i++)
@@ -109,15 +104,16 @@ char *join_strings(char *str1, char *str2) {
 * @amt: int
 * Return: char*
 */
-char *cpy_string(char *str, int amt) {
-	int
-		i = 0;
-	char
-		*new_str = NULL;
+char *cpy_string(char *str, int amt)
+{
+	int i = 0;
+	char *new_str = NULL;
 
-	if (str) {
+	if (str)
+	{
 		new_str = malloc(amt + 1);
-		if (new_str) {
+		if (new_str)
+		{
 			for (; i < amt; i++)
 				new_str[i] = str[i];
 			new_str[i] = '\0';

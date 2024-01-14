@@ -62,7 +62,8 @@ void set_path(void)
 * @chn: int
 * Return: int
 */
-int strc(char* so, char* st, int chn) {
+int strc(char* so, char* st, int chn)
+{
 	int eq = 1, i = 0;
 
 	if (so && st)
