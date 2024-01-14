@@ -1,29 +1,30 @@
 #include "shell.h"
 
+
 /*	Global Variables	*/
-char*	path = NULL;
-int		len = 0;
+char*	path = "$ ";
+int		len = 2;
 
+
+/**
+* main- function
+* @ac: int
+* @av: char**
+* @env: char**
+* Return: int
+*/
 int main(int ac, char** av, char** env) {
-	hsh(ac, av);
-	return (0);
-}
-
-
-int hsh(int ac, char** av) {
-	int
-		mode = 0;
-	char
-		**cmd = NULL;
+	int mode = 0;
+	char **cmd = NULL;
 
 	/*
 		Mode value is set by isatty, which will determine if usage is
 		in interactive or non-interactive mode.
 	*/
 	mode = isatty(STDIN_FILENO);
-	if (mode) {
+	/*if (mode) {
 		set_path();
-	}
+	}*/
 	do {
 		if (mode)
 			write(STDIN_FILENO, path, len);
@@ -33,6 +34,6 @@ int hsh(int ac, char** av) {
 		cmd_free(cmd);
 		cmd = NULL;
 	} while (mode);
-	free(path);
+	/*free(path);*/
 	return (0);
 }

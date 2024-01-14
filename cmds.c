@@ -1,6 +1,11 @@
 #include "cmds.h"
 
 
+/**
+* get_cmd- function
+* @fd: int
+* Return: char**
+*/
 char **get_cmd(int fd) {
 	int
 		pos = 0;
@@ -22,6 +27,12 @@ char **get_cmd(int fd) {
 }
 
 
+/**
+* cmd_maker- function
+* @cmd: char*
+* @wrd: char*
+* Return: char**
+*/
 char **cmd_maker(char **cmd, char *wrd) {
 	static int
 		len;
@@ -53,6 +64,11 @@ char **cmd_maker(char **cmd, char *wrd) {
 }
 
 
+/**
+* cmd_free- function
+* @cmd: char**
+* Return: void
+*/
 void cmd_free(char **cmd) {
 	int
 		i = 0;
@@ -67,6 +83,12 @@ void cmd_free(char **cmd) {
 }
 
 
+/**
+* wrd_maker- function
+* @str: char*
+* @pos: int*
+* Return: char*
+*/
 char *wrd_maker(char *str, int *pos) {
 	int
 		i = 0,

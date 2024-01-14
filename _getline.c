@@ -1,6 +1,11 @@
 #include "_getline.h"
 
 
+/**
+* _getline- function
+* @fd: int
+* Return: char*
+*/
 char *_getline(const int fd) {
 	static char
 		buff[READ_SIZE];
@@ -20,9 +25,9 @@ char *_getline(const int fd) {
 	if (fd == -1) {
 		pos = 0;
 		ar = 0;
-		for (; x < READ_SIZE; x++)
-			buff[x] = '\0';
 	}
+	for (; x < READ_SIZE; x++)
+		buff[x] = '\0';
 	while ((pos < ar) || ((ar = read(fd, buff, READ_SIZE)) && (ar > -1))) {
 		if (!(pos < ar))
 			pos = 0;
@@ -47,6 +52,13 @@ char *_getline(const int fd) {
 }
 
 
+/**
+* end_line- function
+* @str: char*
+* @pos: int
+* @ar: int
+* Return: int
+*/
 int end_line(char *str, int pos, int ar) {
 	int
 		i = pos;
@@ -57,6 +69,12 @@ int end_line(char *str, int pos, int ar) {
 }
 
 
+/**
+* join_strings- function
+* @str1: char*
+* @str2: char*
+* Return: char*
+*/
 char *join_strings(char *str1, char *str2) {
 	int
 		i = 0,
@@ -77,14 +95,20 @@ char *join_strings(char *str1, char *str2) {
 			for (i = 0; i < len2; i++)
 				new_str[i + len1] = str2[i];
 			new_str[len1 + len2] = '\0';
+			free(str1);
+			free(str2);
 		}
 	}
-	free(str1);
-	free(str2);
 	return (new_str);
 }
 
 
+/**
+* cpy_string- function
+* @str: char*
+* @amt: int
+* Return: char*
+*/
 char *cpy_string(char *str, int amt) {
 	int
 		i = 0;
