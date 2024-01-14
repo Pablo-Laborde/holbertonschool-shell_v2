@@ -42,13 +42,13 @@ char **cmd_maker(char **cmd, char *wrd)
 	{
 		len++;
 		/* creates a char** that can hold one argument more */
-		new_cmd = malloc(sizeof(char*) * (len + 1));
+		new_cmd = malloc(sizeof(char *) * (len + 1));
 		if (new_cmd)
 		{
 			if (cmd)
 			{
 				/* copies all the arguments & frees old cmd */
-				for (;i < (len - 1); i++)
+				for (; i < (len - 1); i++)
 					new_cmd[i] = cmd[i];
 				free(cmd);
 			}

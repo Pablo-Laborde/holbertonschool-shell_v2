@@ -21,7 +21,7 @@
 
 
 	/*
-		finds and returns the position where the '\0' or the '\n' is
+	*	finds and returns the position where the '\0' or the '\n' is
 	*/
 	int end_line(char *str, int pos, int ar);
 

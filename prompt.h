@@ -28,4 +28,8 @@
 	/**/
 	int strc(char* so, char* st, int chn);
 
+
+	/**/
+	int get_env(char *str);
+
 #endif

@@ -11,19 +11,9 @@ void set_path(void)
 		pos_p = 4;
 	char *h_aux = NULL, *p_aux = NULL, *new_path = NULL;
 
-	while (environ[i])
-	{
-		if (strc(environ[i], "HOME", 0))
-			break;
-		i++;
-	}
+	i = get_env("HOME");
 	h_aux = &environ[i][pos_h];
-	while (environ[j])
-	{
-		if (strc(environ[j], "PWD", 0))
-			break;
-		j++;
-	}
+	j = get_env("PWD");
 	p_aux = &environ[j][pos_p];
 	flag = strc(h_aux, p_aux, 0);
 	if (flag)
@@ -79,4 +69,23 @@ int strc(char* so, char* st, int chn)
 			eq = 0;
 	}
 	return (eq);
+}
+
+
+/**
+* get_env- function
+* @str: char*
+* Return: int
+*/
+int get_env(char *str)
+{
+	int i = 0;
+
+	while (environ[i])
+	{
+		if (strc(environ[i], str, 0))
+			break;
+		i++;
+	}
+	return (i);
 }
