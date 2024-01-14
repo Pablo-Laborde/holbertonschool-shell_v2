@@ -1,0 +1,35 @@
+HSH(1P)                  POSIX Programmer's Manual                 HSH(1P)
+
+
+NAME
+	hsh - shell, is a student project for a command language interpreter
+
+SYNOPSIS
+	hsh [-option]
+
+DESCRIPTION
+	The hsh is command language interpreter which reads from standard input and
+	executes the commands and arguments passed.
+
+OPTIONS
+	There are no current options implemented.
+
+EXAMPLES
+	Interactive Mode:
+		run the shell:
+			./hsh
+		write a command and arguments:
+			command arguments
+
+	Non Interactive Mode:
+		pass the command through pipeline to the shell:
+			echo "command arguments" | ./hsh
+
+BUGS
+	There are no known bugs.
+
+FUTURE DIRECTIONS
+	None.
+
+
+                                  2017                            SH(1P)
