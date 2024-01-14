@@ -13,7 +13,7 @@ int		len = 0;
 * @env: char**
 * Return: int
 */
-int main(int ac, char** av, char** env)
+int main(int ac, char **av, char **env)
 {
 	int mode = 0;
 	char **cmd = NULL;
@@ -26,9 +26,8 @@ int main(int ac, char** av, char** env)
 	*	in interactive or non-interactive mode.
 	*/
 	mode = isatty(STDIN_FILENO);
-	if (mode) {
+	if (mode)
 		set_path();
-	}
 	do {
 		if (mode)
 			write(STDIN_FILENO, path, len);
