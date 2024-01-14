@@ -31,6 +31,8 @@ int hsh(int ac, char** av) {
 		for (int i = 0; cmd[i]; i++)
 			printf("%s\n", cmd[i]);
 		cmd_free(cmd);
-		free(path);
+		cmd = NULL;
 	} while (mode);
+	free(path);
+	return (0);
 }

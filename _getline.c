@@ -9,6 +9,7 @@ char *_getline(const int fd) {
 	static ssize_t
 		ar;
 	int
+		x = 0,
 		i = pos,
 		len = 0,
 		cl = 0;
@@ -19,6 +20,8 @@ char *_getline(const int fd) {
 	if (fd == -1) {
 		pos = 0;
 		ar = 0;
+		for (; x < READ_SIZE; x++)
+			buff[x] = '\0';
 	}
 	while ((pos < ar) || ((ar = read(fd, buff, READ_SIZE)) && (ar > -1))) {
 		if (!(pos < ar))

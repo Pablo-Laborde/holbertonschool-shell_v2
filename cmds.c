@@ -58,7 +58,7 @@ void cmd_free(char **cmd) {
 		i = 0;
 
 	if (cmd) {
-		/* frees each argument inthe cmd */
+		/* frees each argument in the cmd */
 		for (; cmd[i]; i++)
 			free(cmd[i]);
 		/* frees the cmd */
