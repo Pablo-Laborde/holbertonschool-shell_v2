@@ -11,7 +11,7 @@ char *_getline(const int fd)
 	static char buff[READ_SIZE];
 	static int pos;
 	static ssize_t ar;
-	int x = 0, i = pos, len = 0, cl = 0;
+	int x = 0, m_read = 1, com_line = 1;
 	char *str = NULL, *aux = NULL;
 
 	if (fd == -1)
@@ -19,31 +19,24 @@ char *_getline(const int fd)
 		pos = 0;
 		ar = 0;
 	}
-	for (; x < READ_SIZE; x++)
-		buff[x] = '\0';
-	while ((pos < ar) || ((ar = read(fd, buff, READ_SIZE)) && (ar > -1)))
-	{
-		if (!(pos < ar))
-			pos = 0;
-		i = pos;
-		pos = end_line(buff, pos, ar);
-		len = pos - i + 1;
-		if (!(pos < ar))
-			len--;
-		else
-		{
-			pos++;
-			cl = 1;
-		}
-		aux = cpy_string(&buff[i], len);
-		if (aux)
-		{
-			str = (str) ? join_strings(str, aux) : aux;
-			aux = NULL;
-		}
-		if (cl)
-			break;
-	}
+	else
+		do {
+			if (m_read)
+			{
+				for (x = 0; x < READ_SIZE; x++)
+					buff[x] = '\0';
+				ar = read(fd, buff, READ_SIZE);
+				com_line = end_line(buff);
+				if (com_line)
+					m_read = 0;
+			}
+			if (ar && (ar != -1))
+			{
+				aux = cpy_line(&buff[pos]);
+				str = (str) ? (join_strings(str, aux)) : aux;
+				aux = NULL;
+			}
+		} while (!com_line);
 	return (str);
 }
 
@@ -51,17 +44,13 @@ char *_getline(const int fd)
 /**
 * end_line- function
 * @str: char*
-* @pos: int
-* @ar: int
 * Return: int
 */
-int end_line(char *str, int pos, int ar)
+int end_line(char *str)
 {
-	int i = pos;
+	static int lp = READ_SIZE - 1;
 
-	while (str[i] && (str[i] != '\n') && (i < ar))
-		i++;
-	return (i);
+	return ((!str[lp] || (str[lp] == '\n'))? (1) : (0));
 }
 
 
@@ -99,26 +88,25 @@ char *join_strings(char *str1, char *str2)
 
 
 /**
-* cpy_string- function
+* cpy_line- function
 * @str: char*
-* @amt: int
 * Return: char*
 */
-char *cpy_string(char *str, int amt)
+char *cpy_line(char *str)
 {
-	int i = 0;
+	int i = 0, len = 0;
 	char *new_str = NULL;
 
 	if (str)
 	{
-		new_str = malloc(amt + 1);
+		while (str[len] && (str[len] != '\n'))
+			len++;
+		new_str = malloc(len + 1);
 		if (new_str)
 		{
-			for (; i < amt; i++)
+			for (; i < len; i++)
 				new_str[i] = str[i];
 			new_str[i] = '\0';
-			if (new_str[i - 1] == '\n')
-				new_str[i - 1] = '\0';
 		}
 	}
 	return (new_str);

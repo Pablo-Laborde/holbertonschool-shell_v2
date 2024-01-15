@@ -3,7 +3,7 @@
 
 
 /*	Macros	*/
-	#define READ_SIZE 256
+	#define READ_SIZE 16
 
 
 /*	Libraries		*/
@@ -23,7 +23,7 @@
 	/*
 	*	finds and returns the position where the '\0' or the '\n' is
 	*/
-	int end_line(char *str, int pos, int ar);
+	int end_line(char *str);
 
 
 	/*
@@ -38,7 +38,7 @@
 	/*
 	*	returns a copy of the string given
 	*/
-	char *cpy_string(char *str, int amt);
+	char *cpy_line(char *str);
 
 
 #endif
