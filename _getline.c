@@ -50,7 +50,7 @@ int end_line(char *str)
 {
 	static int lp = READ_SIZE - 1;
 
-	return ((!str[lp] || (str[lp] == '\n'))? (1) : (0));
+	return ((!str[lp] || (str[lp] == '\n')) ? (1) : (0));
 }
 
 
